@@ -10,3 +10,4 @@ public class BritaneyGroupAApplication {
 		SpringApplication.run(BritaneyGroupAApplication.class, args);
 	}
 }
+
