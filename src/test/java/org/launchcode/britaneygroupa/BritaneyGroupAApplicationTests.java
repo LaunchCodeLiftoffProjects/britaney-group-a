@@ -1,10 +1,10 @@
-package org.launchcode.srilc101javafullstackproject;
+package org.launchcode.britaneygroupa;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class SriLc101JavafullstackProjectApplicationTests {
+class BritaneyGroupAApplicationTests {
 
 	@Test
 	void contextLoads() {
