@@ -4,10 +4,12 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class BritaneyGroupAApplication {
+public class BritaneyGroupAApplication
+{
 
 	public static void main(String[] args) {
 		SpringApplication.run(BritaneyGroupAApplication.class, args);
+		System.out.print("Hello world!");
 	}
 }
 
