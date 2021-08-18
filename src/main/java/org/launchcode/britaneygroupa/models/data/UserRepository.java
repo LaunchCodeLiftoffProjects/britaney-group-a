@@ -1,4 +1,10 @@
 package org.launchcode.britaneygroupa.models.data;
 
-public interface UserRepository {
+import org.launchcode.britaneygroupa.models.User;
+import org.springframework.data.repository.CrudRepository;
+
+public interface UserRepository extends CrudRepository<User, Integer> {
+
+    User findByUsername(String username);
+
 }
