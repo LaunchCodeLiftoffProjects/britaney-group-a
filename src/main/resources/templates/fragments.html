@@ -1,10 +1,67 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/" xmlns="http://www.w3.org/1999/html">
+<head th:fragment="head">
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.min.js"></script>
+
 </head>
 <body>
+
+<nav th:fragment="navigation">
+    <ul class="nav">
+        <li class="nav-item"><a href="#">Home</a></li>
+        <li class="nav-item"><a href="#">Specifics</a></li>
+        <li class="nav-item"><a href="#">FAQs</a></li>
+        <li class="nav-item"><a href="#">About</a></li>
+        <li class="nav-item"><a href="#">Contact Us</a></li>
+        <li class="nav-item"><a href="/register">Create Your Account</a></li>
+    </ul>
+</nav>
+
+<header th:fragment="header">
+    <ul class="nav">
+        <li class="nav-item"><a href="#">Home</a></li>
+        <li class="nav-item"><a href="#">Specifics</a></li>
+        <li class="nav-item"><a href="#">FAQs</a></li>
+
+    </ul>
+</header>
+
+<div th:fragment="features_left">
+    <p>Key Freatures</p>
+    <br>
+    <textarea cols="20" rows="4">
+        Feature1
+        Feature2
+        Feature3
+    </textarea>
+    <br>
+    Easy To use
+    <br><br>
+    <input type="text"/>
+</div>
+<div th:fragment="features_right">
+    <br>
+    Your Account
+    <br>
+    <input type="text"/>
+    <br>
+        Member Login
+    <br>
+    <input type="text" value="email"/>
+    <br><br>
+    <input type="password" value="password"/>
+    <br>
+    Forgot password
+
+
+</div>
+
+<footer th:fragment="footer">
+    <p>&copy; 2020 ForgetMeNot.com</p>
+</footer>
 
 </body>
 </html>
