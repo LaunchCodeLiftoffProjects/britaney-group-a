@@ -80,12 +80,7 @@ public class AuthenticationController {
         userRepository.save(newUser);
         setUserInSession(request.getSession(), newUser);
 
-        return "redirect:";
-    }
-
-    @GetMapping
-    public String displayLandingPage(Model model) {
-        return "index";
+        return "redirect:/products";
     }
 
     @GetMapping("/login")
