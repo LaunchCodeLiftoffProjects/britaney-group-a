@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.servlet.http.HttpServletRequest;
+
 @Controller
 @RequestMapping("/products")
 public class ProductController {
@@ -17,8 +19,10 @@ public class ProductController {
     ProductRepository productRepository;
 
     @GetMapping
-    public String displayProductList(Model model) {
-        model.addAttribute("products", productRepository.findAll());
+    public String displayProductList(Model model, HttpServletRequest request) {
+        Integer userId = (Integer) request.getSession().getAttribute("user");
+
+        model.addAttribute("products", productRepository.findById(userId));
         return "listProduct";
     }
 
