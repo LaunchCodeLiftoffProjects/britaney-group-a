@@ -1,10 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="fragments :: head"></head>
+<body class="container">
 
+<nav th:replace="fragments :: navbar"></nav>
+
+This is add products Page.
 </body>
+<footer th:replace="fragments :: footer"></footer>
 </html>
