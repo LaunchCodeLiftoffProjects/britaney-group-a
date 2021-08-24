@@ -41,7 +41,7 @@
                     <a class="nav-link" th:href="@{/login}">LogIn</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Contact</a>
+                    <a class="nav-link" th:href="@{/contact}">Contact</a>
                 </li>
             </ul>
         </div>
@@ -134,6 +134,17 @@
     </tbody>
     </thead>
 </table>
+
+<div th:fragment="contact">
+    <h1>Contact Us</h1>
+    <p>If you wish to contact us, you can do so by calling XXX-XXX-XXXX or by emailing XXXfake_emailXXX@forgetmenot.com.</p>
+    <p>You can also connect with the creators on LinkedIn:</p>
+    <a href="https://www.linkedin.com/in/sangeetha-abhilash-48b7921a7/">Sangeetha Abhilash</a><br>
+    <a href="https://www.linkedin.com/in/gowerdan/">Dan Gower</a><br>
+    <a href="https://www.linkedin.com/in/cedric-hicks-8b04a695/">Cedric Hicks</a><br>
+    <a href="https://www.linkedin.com/in/sri15/">Sridevi Kalagara</a><br>
+</div>
+
 <footer th:fragment="footer" class="container-fluid text-center">
     <p>&copy; 2021 ForgetMeNot.com</p>
 </footer>
