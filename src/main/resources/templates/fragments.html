@@ -60,7 +60,7 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    <a class="nav-link active" aria-current="page" th:href="@{/index}">Home</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Specifics</a>
@@ -72,13 +72,13 @@
                     <a class="nav-link" href="#">About</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="contact">Contact</a>
+                    <a class="nav-link" th:href="@{/contact}">Contact</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Add Product</a>
+                    <a class="nav-link" th:href="@{/products/add}">Add Product</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="logout">Sign Out</a>
+                    <a class="nav-link" th:href="@{/logout}">Sign Out</a>
                 </li>
 
             </ul>
@@ -151,6 +151,10 @@
     <a href="https://www.linkedin.com/in/gowerdan/">Dan Gower</a><br>
     <a href="https://www.linkedin.com/in/cedric-hicks-8b04a695/">Cedric Hicks</a><br>
     <a href="https://www.linkedin.com/in/sri15/">Sridevi Kalagara</a><br>
+</div>
+
+<div th:fragment="addProduct">
+<h3>Add product page</h3>
 </div>
 
 <footer th:fragment="footer" class="container-fluid text-center">
