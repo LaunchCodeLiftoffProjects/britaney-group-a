@@ -6,7 +6,7 @@ import javax.validation.constraints.Size;
 import java.util.Date;
 
 @Entity
-public class Product extends AbstractEntity{
+public class Product extends AbstractEntity {
 
     @NotNull
     @Size(min = 2, max = 20, message = "Invalid entry. Must be between 2 and 20 characters.")
@@ -26,7 +26,8 @@ public class Product extends AbstractEntity{
     @Size(min = 10, max = 100, message = "Invalid entry. Must be between 10 and 100 characters.")
     private String description;
 
-    public Product() {}
+    public Product() {
+    }
 
     public Product(String productName, String productManufacturer, Date dateOfPurchase, Date dateOfExpiry, String description) {
         this.productName = productName;
@@ -74,5 +75,11 @@ public class Product extends AbstractEntity{
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+
+    @Override
+    public String toString() {
+        return productName;
     }
 }
