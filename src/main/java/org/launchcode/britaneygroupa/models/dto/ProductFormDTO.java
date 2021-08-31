@@ -21,7 +21,7 @@ public class ProductFormDTO {
     private Date dateOfExpiry;
 
     @NotNull
-    @Size(min = 10, max = 100, message = "Invalid entry. Must be between 10 and 100 characters.")
+    @Size(min = 5, max = 50, message = "Invalid entry. Must be between 10 and 100 characters.")
     private String description;
 
     public String getName() {
