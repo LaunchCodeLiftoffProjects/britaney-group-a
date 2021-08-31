@@ -1,6 +1,7 @@
 package org.launchcode.britaneygroupa.controllers;
 
 import org.launchcode.britaneygroupa.models.Product;
+import org.launchcode.britaneygroupa.models.User;
 import org.launchcode.britaneygroupa.models.data.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -23,7 +24,7 @@ public class ProductController {
 
     @GetMapping
     public String displayProductList(Model model, HttpServletRequest request) {
-        Integer userId = (Integer) request.getSession().getAttribute("user");
+        Integer userId = ((User) request.getSession().getAttribute("user")).getId();
 
         model.addAttribute("products", productRepository.findAllByUserId(userId));
         return "listProduct";

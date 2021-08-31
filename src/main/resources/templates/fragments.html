@@ -51,6 +51,7 @@
                 </li>
             </ul>
         </div>
+        <div class="float-right text-white" th:if="${session.user}" th:text="${session.user.firstName}"></div>
     </div>
 </nav>
 
@@ -69,18 +70,16 @@
 </div>
 
 <div th:fragment="rightpane" class="col-sm-2 sidenav">
+    New User?
     <br>
-    Register
+    <input type="button" th:onclick="|window.location.href='/register'|" class="btn btn-primary" value="Register"/>
     <br>
-    <input type="text"/>
+    Existing User?
     <br>
-    Login
+    <input type="button" th:onclick="|window.location.href='/login'|" class="btn btn-primary" value="Login"/>
     <br>
-    <input type="text" value="email"/>
-    <br><br>
-    <input type="password" value="password"/>
     <br>
-    Forgot password
+    Forgot password?
 </div>
 
 
