@@ -9,12 +9,10 @@ import java.util.Date;
 public class Product extends AbstractEntity {
 
     @NotNull
-    @Size(min = 2, max = 20, message = "Invalid entry. Must be between 2 and 20 characters.")
-    private String productName;
+    private String name;
 
     @NotNull
-    @Size(min = 2, max = 20, message = "Invalid entry. Must be between 2 and 20 characters.")
-    private String productManufacturer;
+    private String manufacturer;
 
     @NotNull
     private Date dateOfPurchase;
@@ -23,34 +21,36 @@ public class Product extends AbstractEntity {
     private Date dateOfExpiry;
 
     @NotNull
-    @Size(min = 10, max = 100, message = "Invalid entry. Must be between 10 and 100 characters.")
     private String description;
+
+    @NotNull
+    private int userId;
 
     public Product() {
     }
 
-    public Product(String productName, String productManufacturer, Date dateOfPurchase, Date dateOfExpiry, String description) {
-        this.productName = productName;
-        this.productManufacturer = productManufacturer;
+    public Product(String name, String manufacturer, Date dateOfPurchase, Date dateOfExpiry, String description) {
+        this.name = name;
+        this.manufacturer = manufacturer;
         this.dateOfPurchase = dateOfPurchase;
         this.dateOfExpiry = dateOfExpiry;
         this.description = description;
     }
 
-    public String getProductName() {
-        return productName;
+    public String getName() {
+        return name;
     }
 
-    public void setProductName(String productName) {
-        this.productName = productName;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String getProductManufacturer() {
-        return productManufacturer;
+    public String getManufacturer() {
+        return manufacturer;
     }
 
-    public void setProductManufacturer(String productManufacturer) {
-        this.productManufacturer = productManufacturer;
+    public void setManufacturer(String manufacturer) {
+        this.manufacturer = manufacturer;
     }
 
     public Date getDateOfPurchase() {
@@ -77,9 +77,16 @@ public class Product extends AbstractEntity {
         this.description = description;
     }
 
+    public int getUserId() {
+        return userId;
+    }
+
+    public void setUserId(int userId) {
+        this.userId = userId;
+    }
 
     @Override
     public String toString() {
-        return productName;
+        return name;
     }
 }

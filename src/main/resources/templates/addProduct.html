@@ -7,14 +7,14 @@
 
 <form method="post" style="max-width:700px;">
     <div class="form-group">
-        <label th:for="productName">Name</label>
-            <input class="form-control" th:field="${product.productName}"/>
-       <span th:errors="${product.productName}" class="error"></span>
+        <label th:for="name">Name</label>
+            <input class="form-control" th:field="${product.name}"/>
+       <span th:errors="${product.name}" class="error"></span>
     </div>
     <div class="form-group">
-        <label th:for="productManufacturer">Manufacturer</label>
-        <input class="form-control" th:field="${product.productManufacturer}"/>
-        <span th:errors="${product.productManufacturer}" class="error"></span>
+        <label th:for="manufacturer">Manufacturer</label>
+        <input class="form-control" th:field="${product.manufacturer}"/>
+        <span th:errors="${product.manufacturer}" class="error"></span>
     </div>
     <div class="form-group">
         <label th:for="dateOfPurchase">Date Of Purchase</label>

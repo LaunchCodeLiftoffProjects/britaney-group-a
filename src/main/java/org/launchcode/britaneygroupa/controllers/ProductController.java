@@ -25,7 +25,7 @@ public class ProductController {
     public String displayProductList(Model model, HttpServletRequest request) {
         Integer userId = (Integer) request.getSession().getAttribute("user");
 
-        model.addAttribute("products", productRepository.findById(userId));
+        model.addAttribute("products", productRepository.findAllByUserId(userId));
         return "listProduct";
     }
 
@@ -36,11 +36,17 @@ public class ProductController {
     }
 
     @PostMapping("add")
-    public String addProduct(@ModelAttribute @Valid Product newProduct, Errors errors) {
+    public String addProduct(@ModelAttribute @Valid Product newProduct, Errors errors, HttpServletRequest request) {
         if (errors.hasErrors()) {
-        return "addProduct";
+            return "addProduct";
         }
+
+        // get user id from session
+        newProduct.setUserId((Integer) request.getSession().getAttribute("user"));
+
+        // save product to db
         productRepository.save(newProduct);
+
         return "addProduct";
 
     }

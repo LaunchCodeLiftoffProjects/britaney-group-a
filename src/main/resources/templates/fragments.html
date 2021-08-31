@@ -26,7 +26,7 @@
                     <a class="nav-link active" aria-current="page" href="#">Home</a>
                 </li>
                 <li class="nav-item" th:if="${session.user}">
-                    <a class="nav-link" th:href="@{/products/add}">Add Product</a>
+                    <a class="nav-link" th:href="@{/products}">Products</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">About</a>
@@ -82,33 +82,7 @@
     <br>
     Forgot password
 </div>
-<table th:fragment="productList" class="table table-striped">
-    <thead>
-    <tr class="table-primary">
-        <th scope="col">#</th>
-        <th scope="col">Name</th>
-        <th scope="col">Service Provider/Manufacturer</th>
-        <th scope="col">Date of Purchase/Subscription</th>
-        <th scope="col">Date of Expiry</th>
-    </tr>
-    <tbody>
-    <tr class="table-primary">
-        <th scope="row" class="table-primary">1</th>
-        <td class="table-primary"></td>
-        <td class="table-primary"></td>
-        <td class="table-primary"></td>
-        <td class="table-primary"></td>
-    </tr>
-    <tr class="table-primary">
-        <th scope="row" class="table-primary">2</th>
-        <td class="table-primary"></td>
-        <td class="table-primary"></td>
-        <td class="table-primary"></td>
-        <td class="table-primary"></td>
-    </tr>
-    </tbody>
-    </thead>
-</table>
+
 
 <div th:fragment="contact">
     <h1>Contact Us</h1>
