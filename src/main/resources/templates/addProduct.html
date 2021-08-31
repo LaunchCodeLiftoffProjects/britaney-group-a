@@ -7,12 +7,12 @@
 
 <form method="post" style="max-width:700px;">
     <div class="form-group">
-        <label th:for="name">Name</label>
+        <label th:for="name">Name of the Product/Service</label>
             <input class="form-control" th:field="${product.name}"/>
        <span th:errors="${product.name}" class="error"></span>
     </div>
     <div class="form-group">
-        <label th:for="manufacturer">Manufacturer</label>
+        <label th:for="manufacturer">Manufacturer/Service Provider</label>
         <input class="form-control" th:field="${product.manufacturer}"/>
         <span th:errors="${product.manufacturer}" class="error"></span>
     </div>
@@ -27,7 +27,7 @@
         <span th:errors="${product.dateOfExpiry}" class="error"></span>
     </div>
     <div class="form-group">
-        <label th:for="description">Description</label>
+        <label th:for="description">Model No./Subscription Type</label>
         <input class="form-control" th:field="${product.description}"/>
         <span th:errors="${product.description}" class="error"></span>
     </div>
