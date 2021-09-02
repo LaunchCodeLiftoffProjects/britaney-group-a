@@ -1,4 +1,4 @@
-package org.launchcode.srilc101.controllers;
+package org.launchcode.britaneygroupa.controllers;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

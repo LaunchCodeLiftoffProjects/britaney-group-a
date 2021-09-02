@@ -1,8 +1,8 @@
-package org.launchcode.srilc101.controllers;
+package org.launchcode.britaneygroupa.controllers;
 
-import org.launchcode.srilc101.models.Product;
-import org.launchcode.srilc101.models.User;
-import org.launchcode.srilc101.models.data.ProductRepository;
+import org.launchcode.britaneygroupa.models.Product;
+import org.launchcode.britaneygroupa.models.User;
+import org.launchcode.britaneygroupa.models.data.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

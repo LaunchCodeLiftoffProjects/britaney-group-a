@@ -1,17 +1,17 @@
-package org.launchcode.srilc101.models.dto;
+package org.launchcode.britaneygroupa.models;
 
+import javax.persistence.Entity;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.util.Date;
 
-public class ProductFormDTO {
+@Entity
+public class Product extends AbstractEntity {
 
     @NotNull
-    @Size(min = 2, max = 20, message = "Invalid entry. Must be between 2 and 20 characters.")
     private String name;
 
     @NotNull
-    @Size(min = 2, max = 20, message = "Invalid entry. Must be between 2 and 20 characters.")
     private String manufacturer;
 
     @NotNull
@@ -21,8 +21,21 @@ public class ProductFormDTO {
     private Date dateOfExpiry;
 
     @NotNull
-    @Size(min = 5, max = 50, message = "Invalid entry. Must be between 10 and 100 characters.")
     private String description;
+
+    @NotNull
+    private int userId;
+
+    public Product() {
+    }
+
+    public Product(String name, String manufacturer, Date dateOfPurchase, Date dateOfExpiry, String description) {
+        this.name = name;
+        this.manufacturer = manufacturer;
+        this.dateOfPurchase = dateOfPurchase;
+        this.dateOfExpiry = dateOfExpiry;
+        this.description = description;
+    }
 
     public String getName() {
         return name;
@@ -62,5 +75,18 @@ public class ProductFormDTO {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public int getUserId() {
+        return userId;
+    }
+
+    public void setUserId(int userId) {
+        this.userId = userId;
+    }
+
+    @Override
+    public String toString() {
+        return name;
     }
 }

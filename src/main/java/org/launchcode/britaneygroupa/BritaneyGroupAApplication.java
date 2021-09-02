@@ -1,14 +1,14 @@
-package org.launchcode.srilc101;
+package org.launchcode.britaneygroupa;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class SriLc101Application
+public class BritaneyGroupAApplication
 {
 
 	public static void main(String[] args) {
-		SpringApplication.run(SriLc101Application.class, args);
+		SpringApplication.run(BritaneyGroupAApplication.class, args);
 	}
 }
 

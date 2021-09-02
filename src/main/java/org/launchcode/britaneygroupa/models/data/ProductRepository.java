@@ -1,6 +1,6 @@
-package org.launchcode.srilc101.models.data;
+package org.launchcode.britaneygroupa.models.data;
 
-import org.launchcode.srilc101.models.Product;
+import org.launchcode.britaneygroupa.models.Product;
 import org.springframework.data.repository.CrudRepository;
 
 import java.util.List;
