@@ -1,6 +1,6 @@
-package org.launchcode.britaneygroupa.models.data;
+package org.launchcode.srilc101.models.data;
 
-import org.launchcode.britaneygroupa.models.User;
+import org.launchcode.srilc101.models.User;
 import org.springframework.data.repository.CrudRepository;
 
 public interface UserRepository extends CrudRepository<User, Integer> {

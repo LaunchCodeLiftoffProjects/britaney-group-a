@@ -1,9 +1,9 @@
-package org.launchcode.britaneygroupa.controllers;
+package org.launchcode.srilc101.controllers;
 
-import org.launchcode.britaneygroupa.models.User;
-import org.launchcode.britaneygroupa.models.data.UserRepository;
-import org.launchcode.britaneygroupa.models.dto.LoginFormDTO;
-import org.launchcode.britaneygroupa.models.dto.RegisterFormDTO;
+import org.launchcode.srilc101.models.User;
+import org.launchcode.srilc101.models.data.UserRepository;
+import org.launchcode.srilc101.models.dto.LoginFormDTO;
+import org.launchcode.srilc101.models.dto.RegisterFormDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

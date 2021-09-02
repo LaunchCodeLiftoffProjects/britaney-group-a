@@ -1,8 +1,8 @@
-package org.launchcode.britaneygroupa;
+package org.launchcode.srilc101;
 
-import org.launchcode.britaneygroupa.controllers.AuthenticationController;
-import org.launchcode.britaneygroupa.models.User;
-import org.launchcode.britaneygroupa.models.data.UserRepository;
+import org.launchcode.srilc101.controllers.AuthenticationController;
+import org.launchcode.srilc101.models.User;
+import org.launchcode.srilc101.models.data.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 

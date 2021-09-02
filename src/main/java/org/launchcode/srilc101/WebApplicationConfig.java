@@ -1,4 +1,4 @@
-package org.launchcode.britaneygroupa;
+package org.launchcode.srilc101;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;

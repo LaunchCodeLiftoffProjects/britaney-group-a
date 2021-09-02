@@ -1,4 +1,4 @@
-package org.launchcode.britaneygroupa.models;
+package org.launchcode.srilc101.models;
 
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
