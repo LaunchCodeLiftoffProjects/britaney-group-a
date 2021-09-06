@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="fragments :: head"></head>
+<body class="container">
+
+<nav th:replace="fragments :: navbar"></nav>
+
+<form method="post" style="max-width:700px;">
+  <h4> Delete Products</h4>
+<th:block th:each="product : ${products}">
+  <div class="form-group">
+    <label>
+      <span th:text="${product.name}"></span>
+      <input type="checkbox" name="productIds" th:value="${product.id}" class="form-control">
+    </label>
+  </div>
+</th:block>
+  <br>
+<input type="submit" value="Delete Selected products" class="btn btn-danger">
+</form>
+
+
+</body>
+<footer th:replace="fragments :: footer"></footer>
+</html>

@@ -30,7 +30,7 @@
 </table>
 <input type="button" th:onclick="|window.location.href='/products/add'|" class="btn btn-primary" value="Add Product"/>
 <input type="button" class="btn btn-primary" value="Renew Product"/>
-<input type="submit" class="btn btn-danger" value="Delete Product"/>
+<input type="submit" th:onclick="|window.location.href='/products/delete'|" class="btn btn-danger" value="Delete Product"/>
 </body>
 <footer th:replace="fragments :: footer"></footer>
 </html>
