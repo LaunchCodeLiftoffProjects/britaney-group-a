@@ -1,38 +1,47 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org/">
-<head th:replace="fragments :: head"></head>
-<body class="container">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{authlayout}">
+<head>
+    <title>Add Products</title>
+</head>
+<body>
 
-<nav th:replace="fragments :: navbar"></nav>
+<div layout:fragment="content" class="col-sm-8 text-left">
 
-<form method="post" style="max-width:700px;">
-    <div class="form-group">
-        <label th:for="name">Name of the Product/Service</label>
+    <h3>Add Products</h3>
+    <form method="post" style="max-width:700px;">
+        <div class="form-group">
+            <label th:for="name">Name of the Product/Service</label>
             <input class="form-control" th:field="${product.name}"/>
-       <span th:errors="${product.name}" class="error"></span>
-    </div>
-    <div class="form-group">
-        <label th:for="manufacturer">Manufacturer/Service Provider</label>
-        <input class="form-control" th:field="${product.manufacturer}"/>
-        <span th:errors="${product.manufacturer}" class="error"></span>
-    </div>
-    <div class="form-group">
-        <label th:for="dateOfPurchase">Date Of Purchase</label>
+            <span th:errors="${product.name}" class="error"></span>
+        </div>
+        <div class="form-group">
+            <label th:for="manufacturer">Manufacturer/Service Provider</label>
+            <input class="form-control" th:field="${product.manufacturer}"/>
+            <span th:errors="${product.manufacturer}" class="error"></span>
+        </div>
+        <div class="form-group">
+            <label th:for="dateOfPurchase">Date Of Purchase</label>
             <input class="form-control" th:field="${product.dateOfPurchase}"/>
-        <span th:errors="${product.dateOfPurchase}" class="error"></span>
-    </div>
-    <div class="form-group">
-        <label th:for="dateOfExpiry">Date Of Expiry</label>
-        <input class="form-control" th:field="${product.dateOfExpiry}"/>
-        <span th:errors="${product.dateOfExpiry}" class="error"></span>
-    </div>
-    <div class="form-group">
-        <label th:for="description">Model No./Subscription Type</label>
-        <input class="form-control" th:field="${product.description}"/>
-        <span th:errors="${product.description}" class="error"></span>
-    </div>
-    <input type="submit" class="btn btn-primary" value="Submit"/>
-</form>
+            <span th:errors="${product.dateOfPurchase}" class="error"></span>
+        </div>
+        <div class="form-group">
+            <label th:for="dateOfExpiry">Date Of Expiry</label>
+            <input class="form-control" th:field="${product.dateOfExpiry}"/>
+            <span th:errors="${product.dateOfExpiry}" class="error"></span>
+        </div>
+        <div class="form-group">
+            <label th:for="description">Model No./Subscription Type</label>
+            <input class="form-control" th:field="${product.description}"/>
+            <span th:errors="${product.description}" class="error"></span>
+        </div>
+        <input type="submit" class="btn btn-primary" value="Submit"/>
+    </form>
+
+</div>
 </body>
-<footer th:replace="fragments :: footer"></footer>
 </html>
+
+
+
+
+

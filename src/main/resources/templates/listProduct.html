@@ -1,36 +1,43 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org/">
-<head th:replace="fragments :: head"></head>
-<body class="container">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{authlayout}">
+<head>
+    <title>Products</title>
+</head>
+<body>
 
-<nav th:replace="fragments :: navbar"></nav>
+<div layout:fragment="content" class="col-sm text-left">
+    <div th:if="${info}" th:text="${info}"></div>
 
-<div th:if="${info}" th:text="${info}"></div>
+    <h3> Product List</h3>
+    <table class="table table-striped">
+        <thead>
+        <tr class="table-primary">
+            <th scope="col">Name of the Product/Service</th>
+            <th scope="col">Manufacturer/Service Provider</th>
+            <th scope="col">Date of Purchase/Subscription</th>
+            <th scope="col">Date of Expiry</th>
+            <th scope="col">Model No./Subscription Type</th>
+        </tr>
+        <tbody>
+        <tr class="table-primary" th:each="product : ${products}">
+            <td class="table-primary" th:text="${product.name}" ></td>
+            <td class="table-primary" th:text="${product.manufacturer}" ></td>
+            <td class="table-primary" th:text="${product.dateOfPurchase}" ></td>
+            <td class="table-primary" th:text="${product.dateOfExpiry}" ></td>
+            <td class="table-primary" th:text="${product.description}"></td>
+        </tr>
+        </tbody>
+        </thead>
+    </table>
+    <input type="button" th:onclick="|window.location.href='/products/add'|" class="btn btn-primary" value="Add Product"/>
+    <input type="button" class="btn btn-primary" value="Renew Product"/>
+    <input type="submit" class="btn btn-danger" value="Delete Product"/>
 
-<h3> Product List</h3>
-<table class="table table-striped">
-<thead>
-<tr class="table-primary">
-    <th scope="col">Name of the Product/Service</th>
-    <th scope="col">Manufacturer/Service Provider</th>
-    <th scope="col">Date of Purchase/Subscription</th>
-    <th scope="col">Date of Expiry</th>
-    <th scope="col">Model No./Subscription Type</th>
-</tr>
-<tbody>
-<tr class="table-primary" th:each="product : ${products}">
-    <td class="table-primary" th:text="${product.name}" ></td>
-    <td class="table-primary" th:text="${product.manufacturer}" ></td>
-    <td class="table-primary" th:text="${product.dateOfPurchase}" ></td>
-    <td class="table-primary" th:text="${product.dateOfExpiry}" ></td>
-    <td class="table-primary" th:text="${product.description}"></td>
-</tr>
-</tbody>
-</thead>
-</table>
-<input type="button" th:onclick="|window.location.href='/products/add'|" class="btn btn-primary" value="Add Product"/>
-<input type="button" class="btn btn-primary" value="Renew Product"/>
-<input type="submit" class="btn btn-danger" value="Delete Product"/>
+</div>
 </body>
-<footer th:replace="fragments :: footer"></footer>
 </html>
+
+
+
+
+
