@@ -17,9 +17,6 @@
         &emsp;
 
         <a class="navbar-brand" href="#">Forget Me Not</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item">
@@ -55,7 +52,7 @@
     </div>
 </nav>
 
-<div th:fragment="leftpane" class="col-sm-2 sidenav">
+<div th:fragment="leftpane" class="col-sm-2 sidenav leftpane-dark bg-light">
     <h2>Features</h2><br>
     <li> Simple, cheap and easy to use. </li><br>
     <li> Hassle free timely reminders. </li><br>
@@ -63,13 +60,15 @@
     <li> Easy uploads using scan/photograph. </li>
 </div>
 
-<div th:fragment="maincontent" class="col-sm-8 text-left">
-    <h1>Welcome to Forget Me Not!</h1>
+<div th:fragment="maincontent" class="col text-left maincontent-dark bg-light">
+    <br>
+    <h2>Welcome to Forget Me Not!</h2>
     <h3>A reminder app to receive alerts for warranties, subscriptions and a lot more!</h3>
     <p>The purpose of this application is to give the user a single placeholder that holds and tracks all of their warranties, accounts with recurring payments, and similar subscriptions. The user will be able to upload documents and keep them organized so that nothing falls through the cracks. The application will notify the user before the end date or renewal date of their various subscriptions.</p>
+    <br>
 </div>
 
-<div th:fragment="rightpane" class="col-sm-2 sidenav">
+<div th:fragment="rightpane" class="col-sm-2 sidenav rightpane-dark bg-light">
     New User?
     <br>
     <input type="button" th:onclick="|window.location.href='/register'|" class="btn btn-primary" value="Register"/>
@@ -83,10 +82,9 @@
     Forgot password?
 </div>
 
-
 <div th:fragment="contact">
     <h1>Contact Us</h1>
-    <p>If you wish to contact us, you can do so by calling XXX-XXX-XXXX or by emailing XXXfake_emailXXX@forgetmenot.com.</p>
+    <p>If you wish to contact us, you can do so by calling XXX-XXX-XXXX or by emailing XXX_emailXXX@forgetmenot.com.</p>
     <p>You can also connect with the creators on LinkedIn:</p>
     <a href="https://www.linkedin.com/in/sangeetha-abhilash-48b7921a7/">Sangeetha Abhilash</a><br>
     <a href="https://www.linkedin.com/in/gowerdan/">Dan Gower</a><br>
@@ -96,9 +94,14 @@
 
 
 
-<footer th:fragment="footer" class="container-fluid text-center">
-    <p>&copy; 2021 ForgetMeNot.com</p>
+<footer th:fragment="footer" class="container-fluid text-center bg-info">
+    <div class="row">
+        <div class="col-md text-white">
+            &copy; 2021 ForgetMeNot.com
+        </div>
+    </div>
 </footer>
+
 
 </body>
 </html>

@@ -1,12 +1,18 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org/">
-<head th:replace="fragments :: head"></head>
-<body class="container">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout}">
+<head>
+    <title>Contact Us</title>
+</head>
+<body>
 
-<nav th:replace="fragments :: navbar"></nav>
-
-<div th:replace="fragments :: contact"></div>
-
-<footer th:replace="fragments :: footer"></footer>
+<div layout:fragment="content" class="col-sm-8 text-left">
+    <h3>Contact Us</h3><br>
+    <p>If you wish to contact us, you can do so by calling XXX-XXX-XXXX or by emailing XXX_emailXXX@forgetmenot.com.</p>
+    <p>You can also connect with the creators on LinkedIn:</p>
+    <a href="https://www.linkedin.com/in/sangeetha-abhilash-48b7921a7/">Sangeetha Abhilash</a><br>
+    <a href="https://www.linkedin.com/in/gowerdan/">Dan Gower</a><br>
+    <a href="https://www.linkedin.com/in/cedric-hicks-8b04a695/">Cedric Hicks</a><br>
+    <a href="https://www.linkedin.com/in/sri15/">Sridevi Kalagara</a><br>
+</div>
 </body>
 </html>

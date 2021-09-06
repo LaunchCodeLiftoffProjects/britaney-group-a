@@ -1,11 +1,13 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org/">
-<head th:replace="fragments :: head"></head>
-<body class="container">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout}">
+<head>
+    <title>Register</title>
+</head>
+<body>
 
-<nav th:replace="fragments :: navbar"></nav>
-
-<form method="post">
+<div layout:fragment="content" class="col-sm-8 text-left">
+<h3>Register</h3>
+<form method="post" action="/register">
     <div class="form-group">
         <label>First Name
             <input class="form-control" th:field="${registerFormDTO.firstName}"/>
@@ -44,6 +46,6 @@
 
     <input type="submit" class="btn btn-primary" value="Register"/>
 </form>
-<footer th:replace="fragments :: footer"></footer>
+</div>
 </body>
 </html>

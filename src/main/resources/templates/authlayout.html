@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <title layout:title-pattern="$CONTENT_TITLE - $LAYOUT_TITLE">Forget Me Not</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+
+<nav th:replace="fragments :: navbar"></nav>
+
+<div  class="container-fluid text-left">
+    <div class="row content">
+        <div layout:fragment="content" >
+            <h2>Auth Content</h2><br>
+        </div>
+
+        <div th:replace="fragments :: rightpane" />
+    </div>
+</div>
+
+<footer th:replace="fragments :: footer"/>
+
+</body>
+</html>

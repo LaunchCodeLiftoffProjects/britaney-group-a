@@ -1,28 +1,31 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org/">
-<head th:replace="fragments :: head"></head>
-<body class="container">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout}">
+<head>
+    <title>Login</title>
+</head>
+<body>
 
-<nav th:replace="fragments :: navbar"></nav>
+<div layout:fragment="content" class="col-sm-8 text-left">
+    <h3>Login</h3><br>
+    <form method="post" action="/login">
+        <div class="form-group">
+            <label th:for="username">Username
+                <input class="form-control" th:field="${loginFormDTO.userName}">
+            </label>
+            <p class="error" th:errors="${loginFormDTO.userName}"></p>
+        </div>
+        <div class="form-group">
+            <label>Password
+                <input class="form-control" th:field="${loginFormDTO.password}" type="password">
+            </label>
+            <p class="error" th:errors="${loginFormDTO.password}"></p>
+        </div><br>
 
-<form method="post" action="/login">
-    <div class="form-group">
-        <label th:for="username">Username
-            <input class="form-control" th:field="${loginFormDTO.userName}">
-        </label>
-        <p class="error" th:errors="${loginFormDTO.userName}"></p>
-    </div>
-    <div class="form-group">
-        <label>Password
-            <input class="form-control" th:field="${loginFormDTO.password}" type="password">
-        </label>
-        <p class="error" th:errors="${loginFormDTO.password}"></p>
-    </div>
+        <input type="submit" class="btn btn-primary" value="Log In" />
+    </form><br>
 
-    <input type="submit" class="btn btn-primary" value="Log In" />
-</form>
+    <p>Don't have an account? <a href="/register">Register for one.</a></p>
+</div>
 
-<p>Don't have an account? <a href="/register">Register for one.</a></p>
-<div th:replace="fragments:: footer"></div>
 </body>
 </html>
