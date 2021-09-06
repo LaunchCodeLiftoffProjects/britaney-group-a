@@ -16,6 +16,8 @@
     <th scope="col">Date of Purchase/Subscription</th>
     <th scope="col">Date of Expiry</th>
     <th scope="col">Model No./Subscription Type</th>
+    <th scope="col">Edit Product</th>
+    <th scope="col">Delete Product</th>
 </tr>
 <tbody>
 <tr class="table-primary" th:each="product : ${products}">
@@ -24,13 +26,13 @@
     <td class="table-primary" th:text="${product.dateOfPurchase}" ></td>
     <td class="table-primary" th:text="${product.dateOfExpiry}" ></td>
     <td class="table-primary" th:text="${product.description}"></td>
+    <td><input type="button" class="btn btn-primary" value="Edit"/></td>
+    <td><input type="submit" th:onclick="|window.location.href='/products/delete'|" class="btn btn-danger" value="Delete"/></td>
 </tr>
 </tbody>
 </thead>
 </table>
 <input type="button" th:onclick="|window.location.href='/products/add'|" class="btn btn-primary" value="Add Product"/>
-<input type="button" class="btn btn-primary" value="Renew Product"/>
-<input type="submit" th:onclick="|window.location.href='/products/delete'|" class="btn btn-danger" value="Delete Product"/>
 </body>
 <footer th:replace="fragments :: footer"></footer>
 </html>
