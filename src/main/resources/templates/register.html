@@ -6,7 +6,7 @@
 <body>
 
 <div layout:fragment="content" class="col-sm-8 text-left">
-<h3>Register</h3>
+<h3>Register</h3><br>
 <form method="post" action="/register">
     <div class="form-group">
         <label>First Name
@@ -40,7 +40,7 @@
     </div>
     <div class="form-group">
         <label>Verify Password
-            <input class="form-control" th:field="${registerFormDTO.verifyPassword}" type="password"/>
+            <input class="form-control" th:field="${registerFormDTO.verifyPassword}" type="password"/><br>
         </label>
     </div>
 
