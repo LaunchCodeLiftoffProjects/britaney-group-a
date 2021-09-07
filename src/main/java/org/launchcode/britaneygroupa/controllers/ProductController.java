@@ -49,8 +49,8 @@ public class ProductController {
         redirectAttrs.addFlashAttribute("info", "Product Added");
 
         return "redirect:/products";
-
     }
+
     @GetMapping("delete")
     public String renderDeleteProductForm(Model model,HttpServletRequest request) {
         model.addAttribute("title", "Delete Product");
@@ -60,6 +60,24 @@ public class ProductController {
         model.addAttribute("products", productRepository.findAllByUserId(userId));
 
         return "deleteProduct";
+    }
+
+    @GetMapping("/edit/{id}")
+    public String edit(@PathVariable(name = "id") int id, Model model) {
+        model.addAttribute("product", productRepository.findById(id));
+        return "addProduct";
+    }
+
+    @PostMapping("/edit/{id}")
+    public String edit(@PathVariable(name = "id") int id, @ModelAttribute @Valid Product newProduct, Errors errors, HttpServletRequest request, RedirectAttributes redirectAttrs) {
+        newProduct.setUserId(((User) request.getSession().getAttribute("user")).getId());
+        // save product to db
+        newProduct.setId(id);
+        productRepository.save(newProduct);
+
+        redirectAttrs.addFlashAttribute("info", "Product Saved");
+
+        return "redirect:/products";
     }
 
     @PostMapping("delete")

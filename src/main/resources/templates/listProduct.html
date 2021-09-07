@@ -27,7 +27,7 @@
         <td class="table-primary" th:text="${product.dateOfPurchase}" ></td>
         <td class="table-primary" th:text="${product.dateOfExpiry}" ></td>
         <td class="table-primary" th:text="${product.description}"></td>
-        <td><input type="button" class="btn btn-primary" value="Edit"/></td>
+        <td><a th:href="@{'/products/edit/' + ${product.id}}">Edit</a></td>
         <td><input type="submit" th:onclick="|window.location.href='/products/delete'|" class="btn btn-danger" value="Delete"/></td>
     </tr>
     </tbody>
