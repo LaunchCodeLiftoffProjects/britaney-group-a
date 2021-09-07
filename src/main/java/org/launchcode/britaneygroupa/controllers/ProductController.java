@@ -51,17 +51,6 @@ public class ProductController {
         return "redirect:/products";
     }
 
-    @GetMapping("delete")
-    public String renderDeleteProductForm(Model model,HttpServletRequest request) {
-        model.addAttribute("title", "Delete Product");
-       // model.addAttribute("products", ProductRepository.findAll());
-        Integer userId = ((User) request.getSession().getAttribute("user")).getId();
-
-        model.addAttribute("products", productRepository.findAllByUserId(userId));
-
-        return "deleteProduct";
-    }
-
     @GetMapping("/edit/{id}")
     public String edit(@PathVariable(name = "id") int id, Model model) {
         model.addAttribute("product", productRepository.findById(id));
@@ -80,17 +69,9 @@ public class ProductController {
         return "redirect:/products";
     }
 
-    @PostMapping("delete")
-    public String processDeleteProductForm(@RequestParam(required = false) int[] productIds) {
-
-        if (productIds != null) {
-            for (int id : productIds) {
-                productRepository.deleteById(id);
-            }
-        }
-
-        return "redirect:";
+     @RequestMapping("/delete/{id}")
+    public String processDeleteProductForm(@PathVariable(name = "id") int id, Model model) {
+        model.addAttribute("product", productRepository.deleteById(id));
+        return "redirect:/products";
     }
-
-
-}
+  }

@@ -28,7 +28,10 @@
         <td class="table-primary" th:text="${product.dateOfExpiry}" ></td>
         <td class="table-primary" th:text="${product.description}"></td>
         <td><a th:href="@{'/products/edit/' + ${product.id}}">Edit</a></td>
-        <td><input type="submit" th:onclick="|window.location.href='/products/delete'|" class="btn btn-danger" value="Delete"/></td>
+       <!--<td>
+       <input type="submit" th:onclick="|window.location.href='/products/delete'|" class="btn btn-danger" value="Delete"/>
+       </td>-->
+        <td ><a th:href="@{'/products/delete/' + ${product.id}}" onclick="return confirm('Are you sure you want to delete this item')">Delete</a> </td>
     </tr>
     </tbody>
     </thead>
