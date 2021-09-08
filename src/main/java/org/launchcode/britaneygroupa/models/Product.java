@@ -2,7 +2,7 @@ package org.launchcode.britaneygroupa.models;
 
 import javax.persistence.Entity;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
+import org.springframework.format.annotation.DateTimeFormat;
 import java.util.Date;
 
 @Entity
@@ -15,9 +15,11 @@ public class Product extends AbstractEntity {
     private String manufacturer;
 
     @NotNull
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date dateOfPurchase;
 
     @NotNull
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date dateOfExpiry;
 
     @NotNull
