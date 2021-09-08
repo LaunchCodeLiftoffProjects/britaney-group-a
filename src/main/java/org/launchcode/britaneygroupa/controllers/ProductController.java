@@ -20,6 +20,7 @@ public class ProductController {
     @Autowired
     ProductRepository productRepository;
 
+    //display list of products specific to the userId
     @GetMapping
     public String displayProductList(Model model, HttpServletRequest request) {
         Integer userId = ((User) request.getSession().getAttribute("user")).getId();
@@ -28,6 +29,7 @@ public class ProductController {
         return "listProduct";
     }
 
+    //Get the form to add the products
     @GetMapping("add")
     public String displayAddProductForm(Model model) {
         model.addAttribute(new Product());
