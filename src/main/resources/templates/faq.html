@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout}">
+<head>
+    <title>FAQ</title>
+</head>
+<body>
+
+<div layout:fragment="content" class="col-sm-8 text-left">
+    <h1>Frequently Asked Questions</h1>
+    <p>These are the answers to some of the most common questions users have about Forget-Me-Not. If you have any additional questions, please <a href="/contact">reach out to us</a>.</p>
+    <br>
+    <h2>Is There a Limit to the Number of Products I Can Store?</h2>
+    <p>No! You can store as many products as you want. Because this information is stored locally on your machine, the only limitation is your own storage space. In future iterations of the product, there may be a tiered pricing structure that limits the number of products stored by free accounts.</p>
+    <br>
+    <h2>Which Types of Products Can I Store?</h2>
+    <p>You can store any type of subscription product in Forget-Me-Not. If you have a warranty you want to renew, or a SaaS product you want to cancel before the next billing cycle, this app can help!</p>
+    <br>
+    <h2>How Do I Create an Account?</h2>
+    <p>Creating an account is simple! Simply go to the <a href="/register">Register</a> page to get started!</p>
+    <br>
+    <h2>How Do I Reset My Password?</h2>
+    <p>{{we will have to fill this out after we establish “forgot password?” functionality, can just link to that page.}}</p>
+    <br>
+    <h2>Is My Information Safe?</h2>
+    <p>Yes! Currently this application runs on your local machine, so your data is every bit as secure as your local SQL workspace. Plans for future improvements include implementation of authentication best practices, including password hashing and the ability to sign in with Google. That way, your information will remain secure even when it is stored by Forget-Me-Not. We will never store any payment or credit card information associated with your subscriptions. Any personal information stored by Forget-Me-Not in the future will be kept safe in a password-protected database.</p>
+    <br>
+    <h2>How Much Does It Cost?</h2>
+    <p>Forget-Me-Not is free to use, though hiring one of the creators as your payment is <strong>strong</strong>ly encouraged.</p> <!-- lol, get it? -->
+    <br>
+    <h2>What Happens if I Change My Email Address?</h2>
+    <p>You will still be able to log in with your old username and password. Future improvements include adding account management tools including the ability to update your email address.</p>
+</div>
+</body>
+</html>

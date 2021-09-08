@@ -14,4 +14,10 @@ public class HomeController {
 
     @GetMapping("/contact")
     public String displayContactPage(Model model) {return "contact"; }
+
+    @GetMapping("/about")
+    public String displayAboutPage(Model model) {return "about"; }
+
+    @GetMapping("/faq")
+    public String displayFAQPage(Model model) {return "faq"; }
 }

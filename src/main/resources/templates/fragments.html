@@ -26,13 +26,13 @@
                     <a class="nav-link" th:href="@{/products}">Products</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">About</a>
+                    <a class="nav-link" th:href="@{/about}">About</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Features</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">FAQS</a>
+                    <a class="nav-link" th:href="@{/faq}">FAQs</a>
                 </li>
                 <li class="nav-item" th:if="${session.user == null}">
                     <a class="nav-link" th:href="@{/register}">Register</a>
