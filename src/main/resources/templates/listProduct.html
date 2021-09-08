@@ -27,7 +27,7 @@
         <td class="table-primary" th:text="${product.dateOfPurchase}" ></td>
         <td class="table-primary" th:text="${product.dateOfExpiry}" ></td>
         <td class="table-primary" th:text="${product.description}"></td>
-        <td><a th:href="@{'/products/edit/' + ${product.id}}" class="btn btn-primary">Edit</a></td>
+        <td><a th:href="@{'/products/edit/' + ${product.id}}" class="btn btn-success">Edit</a></td>
         <!--<td><a th:href="@{/products/edit/{id}(id=${product.id})}" class="btn btn-primary">Edit</a></td>-->
        <!--<td>
        <input type="submit" th:onclick="|window.location.href='/products/delete'|" class="btn btn-danger" value="Delete"/>
