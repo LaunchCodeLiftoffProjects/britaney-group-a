@@ -21,10 +21,10 @@ public class AuthenticationFilter extends HandlerInterceptorAdapter {
     @Autowired
     AuthenticationController authenticationController;
 
-    private static final List<String> whitelist = Arrays.asList("/login", "/register", "/logout", "/css");
+    private static final List<String> blacklist = Arrays.asList("/products");
 
-    private static boolean isWhitelisted(String path) {
-        for (String pathRoot : whitelist) {
+    private static boolean isBlackListed(String path) {
+        for (String pathRoot : blacklist) {
             if (path.startsWith(pathRoot)) {
                 return true;
             }
@@ -41,9 +41,10 @@ public class AuthenticationFilter extends HandlerInterceptorAdapter {
         User user = authenticationController.getUserFromSession(session);
 
         // The user is logged in
-        if (user != null) {
+        if (user != null || !isBlackListed(request.getRequestURI())) {
             return true;
         }
+        System.out.println("Not Granted : " + request.getRequestURI());
 
         // The user is NOT logged in
         response.sendRedirect("/login");
