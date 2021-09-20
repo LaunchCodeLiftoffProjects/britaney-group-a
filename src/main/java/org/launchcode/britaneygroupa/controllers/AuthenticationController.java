@@ -122,32 +122,17 @@ public class AuthenticationController {
         return "index";
     }
 
-    @GetMapping("/forgot")
+    @GetMapping("/forgotPassword")
     public String displayForgotPasswordForm(Model model) {
         model.addAttribute(new ForgotPasswordFormDTO());
         model.addAttribute("title", "Forgot Password");
-        return "forgot";
+        return "forgotPassword";
     }
 
-    @PostMapping("/forgot")
-    public String processForgotPasswordForm(@ModelAttribute @Valid ForgotPasswordFormDTO forgotPasswordFormDTO,
-                                            Errors errors, HttpServletRequest request, Model model) {
-
-        if (errors.hasErrors()) {
-            model.addAttribute("title", "Forgot Password");
-            return "forgot";
-        }
-
-        User userEmail = userRepository.findByEmail(forgotPasswordFormDTO.getEmail());
-
-        if (userEmail != null) {
-            errors.rejectValue("email", "email.invalid", "The given email does not exist");
-            model.addAttribute("title", "Forgot Password");
-            return "forgot";
-        }
-
-        setUserInSession(request.getSession(), userEmail);
-        return "redirect:/forgot";
+    @PostMapping("/forgotPassword")
+    public String processForgotPasswordForm(Model model){
+        model.addAttribute(new ForgotPasswordFormDTO());
+        return "forgotPassword";
     }
 
 }
