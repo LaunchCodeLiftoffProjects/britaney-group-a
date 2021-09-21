@@ -29,7 +29,7 @@
                     <a class="nav-link" th:href="@{/about}">About</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Features</a>
+                    <a class="nav-link" th:href="@{/features}">Features</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" th:href="@{/faq}">FAQs</a>
@@ -52,19 +52,26 @@
     </div>
 </nav>
 
-<div th:fragment="leftpane" class="col-sm-2 sidenav leftpane-dark bg-light">
+<!-- <div th:fragment="leftpane" class="col-sm-2 sidenav leftpane-dark bg-light">
     <h2>Features</h2><br>
     <li> Simple, cheap and easy to use. </li><br>
     <li> Hassle free timely reminders. </li><br>
     <li> Safe and secure accounts/transactions. </li><br>
     <li> Easy uploads using scan/photograph. </li>
-</div>
+</div> -->
 
 <div th:fragment="maincontent" class="col text-left maincontent-dark bg-light">
     <br>
     <h2>Welcome to Forget Me Not!</h2>
-    <h3>A reminder app to receive alerts for warranties, subscriptions and a lot more!</h3>
-    <p>The purpose of this application is to give the user a single placeholder that holds and tracks all of their warranties, accounts with recurring payments, and similar subscriptions. The user will be able to upload documents and keep them organized so that nothing falls through the cracks. The application will notify the user before the end date or renewal date of their various subscriptions.</p>
+    <h3>A reminder app for warranties, subscriptions and more!</h3>
+    <p>The purpose of this application is to provide a single source of truth that holds and tracks all of a user's warranties, accounts with recurring payments, and similar subscriptions. The user will be able to upload products and keep them organized so that nothing falls through the cracks. Forget-Me-Not notifies the user before the end date or renewal date of their various subscriptions. Never pay for an abandoned service again!</p>
+    <br>
+    <ul>
+        <li> Simple, free, and easy to use </li>
+        <li> Timely reminders with no hassle </li>
+        <li> Safe and secure accounts and data </li>
+        <li> Easy uploads through an intuitive form </li>
+    </ul>
     <br>
 </div>
 

@@ -18,6 +18,9 @@ public class HomeController {
     @GetMapping("/about")
     public String displayAboutPage(Model model) {return "about"; }
 
+    @GetMapping("/features")
+    public String displayFeaturesPage(Model model) {return "features"; }
+
     @GetMapping("/faq")
     public String displayFAQPage(Model model) {return "faq"; }
 }
