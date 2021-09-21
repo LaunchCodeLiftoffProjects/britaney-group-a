@@ -1,5 +1,7 @@
 package org.launchcode.britaneygroupa.controllers;
 
+import net.bytebuddy.utility.RandomString;
+import org.aspectj.apache.bcel.classfile.Utility;
 import org.launchcode.britaneygroupa.models.User;
 import org.launchcode.britaneygroupa.models.data.UserRepository;
 import org.launchcode.britaneygroupa.models.dto.ForgotPasswordFormDTO;
@@ -121,6 +123,7 @@ public class AuthenticationController {
         return "index";
     }
 
+    /*
     @GetMapping("/forgotPassword")
     public String displayForgotPasswordForm(Model model) {
         model.addAttribute(new ForgotPasswordFormDTO());
@@ -129,9 +132,10 @@ public class AuthenticationController {
     }
 
     @PostMapping("/forgotPassword")
-    public String processForgotPasswordForm(Model model){
-        model.addAttribute(new ForgotPasswordFormDTO());
+    public String processForgotPasswordForm(HttpServletRequest request, Model model){
+        String email = request.getParameter("email");
+        String token = RandomString.make(30);
         return "forgotPassword";
     }
-
+*/
 }

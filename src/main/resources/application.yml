@@ -8,3 +8,15 @@ spring:
     static-locations: file:src/main/resources/static/
     cache:
       period: 0
+
+  mail:
+    host: smtp.gmail.com
+    username: forgetmenot.app1@gmail.com
+    password: LC2forget0me2not1!
+    port: 587
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
