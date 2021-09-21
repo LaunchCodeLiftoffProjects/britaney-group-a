@@ -17,8 +17,10 @@
         <th scope="col">Date of Purchase/Subscription</th>
         <th scope="col">Date of Expiry</th>
         <th scope="col">Model No./Subscription Type</th>
+        <th scope="col">Product Image</th>
         <th scope="col">Edit Product</th>
         <th scope="col">Delete Product</th>
+
     </tr>
     <tbody>
     <tr class="table-primary" th:each="product : ${products}">
@@ -27,6 +29,8 @@
         <td class="table-primary" th:text="${product.dateOfPurchase}" ></td>
         <td class="table-primary" th:text="${product.dateOfExpiry}" ></td>
         <td class="table-primary" th:text="${product.description}"></td>
+        <td class="table-primary"><img th:src="${product.photosImagePath}" height="40" width="40"></td>
+
         <td><a th:href="@{'/products/edit/' + ${product.id}}" class="btn btn-success">Edit</a></td>
         <!--<td><a th:href="@{/products/edit/{id}(id=${product.id})}" class="btn btn-primary">Edit</a></td>-->
        <!--<td>

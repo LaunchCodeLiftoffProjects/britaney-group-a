@@ -1,12 +1,29 @@
 package org.launchcode.britaneygroupa.models;
 
-import javax.persistence.Entity;
-import javax.validation.constraints.NotNull;
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.web.multipart.MultipartFile;
+
+import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.util.Date;
 
+
 @Entity
+@Table(name = "product")
 public class Product extends AbstractEntity {
+
+    @Override
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    @Id
+    private int id;
 
     @NotNull
     private String name;
@@ -28,15 +45,39 @@ public class Product extends AbstractEntity {
     @NotNull
     private int userId;
 
+    @Column(length = 64)
+
+    private String fileName;
+
+    public MultipartFile getImage() {
+        return image;
+    }
+
+    public void setImage(MultipartFile image) {
+        this.image = image;
+    }
+
+    @Transient
+
+    private MultipartFile image;
+
+    @Transient
+    public String getPhotosImagePath() {
+        if (fileName == null) return null;
+        return "/Product-image/" + id + "/" + fileName;
+    }
+
     public Product() {
     }
 
-    public Product(String name, String manufacturer, Date dateOfPurchase, Date dateOfExpiry, String description) {
+    public Product(Integer id, String name, String manufacturer, Date dateOfPurchase, Date dateOfExpiry, String description, String fileName) {
+        this.id = id;
         this.name = name;
         this.manufacturer = manufacturer;
         this.dateOfPurchase = dateOfPurchase;
         this.dateOfExpiry = dateOfExpiry;
         this.description = description;
+        this.fileName = fileName;
     }
 
     public String getName() {
@@ -85,6 +126,14 @@ public class Product extends AbstractEntity {
 
     public void setUserId(int userId) {
         this.userId = userId;
+    }
+
+    public String getFileName() {
+        return fileName;
+    }
+
+    public void setFileName(String fileName) {
+        this.fileName = fileName;
     }
 
     @Override

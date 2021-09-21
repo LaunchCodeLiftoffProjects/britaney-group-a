@@ -1,5 +1,7 @@
 package org.launchcode.britaneygroupa.models.dto;
 
+import org.springframework.web.multipart.MultipartFile;
+
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.util.Date;
@@ -23,6 +25,9 @@ public class ProductFormDTO {
     @NotNull
     @Size(min = 5, max = 50, message = "Invalid entry. Must be between 10 and 100 characters.")
     private String description;
+
+    @NotNull
+    private String fileName;
 
     public String getName() {
         return name;
@@ -62,5 +67,13 @@ public class ProductFormDTO {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public String getFileName() {
+        return fileName;
+    }
+
+    public void setFileName(String fileName) {
+        this.fileName = fileName;
     }
 }
