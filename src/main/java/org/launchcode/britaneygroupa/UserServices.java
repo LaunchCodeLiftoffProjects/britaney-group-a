@@ -3,6 +3,7 @@ package org.launchcode.britaneygroupa;
 
 import org.launchcode.britaneygroupa.models.User;
 import org.launchcode.britaneygroupa.models.data.UserRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import javax.transaction.Transactional;
@@ -11,6 +12,7 @@ import javax.transaction.Transactional;
 @Transactional
 public class UserServices {
 
+    @Autowired
     private UserRepository userRepository;
 
     public void updateResetPasswordToken(String token, String email) throws UserNotFoundException {
@@ -19,7 +21,7 @@ public class UserServices {
             user.setResetPasswordToken(token);
             userRepository.save(user);
         } else {
-            throw new UserNotFoundException("Count not find any customer with the email " + email);
+            throw new UserNotFoundException("Could not find any customer with the email " + email);
         }
     }
 

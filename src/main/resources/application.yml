@@ -12,7 +12,7 @@ spring:
   mail:
     host: smtp.gmail.com
     username: forgetmenot.app1@gmail.com
-    password: LC2forget0me2not1!
+    password: mkihagtmytldoghz
     port: 587
     properties:
       mail:
@@ -20,3 +20,5 @@ spring:
           auth: true
           starttls:
             enable: true
+#            apppassword: mkihagtmytldoghz
+#             password: LC2forget0me2not1!

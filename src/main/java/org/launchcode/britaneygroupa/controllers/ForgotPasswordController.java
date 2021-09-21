@@ -5,17 +5,21 @@ import org.launchcode.britaneygroupa.UserNotFoundException;
 import org.launchcode.britaneygroupa.UserServices;
 import org.launchcode.britaneygroupa.Utility;
 import org.launchcode.britaneygroupa.models.User;
+import org.launchcode.britaneygroupa.models.dto.ForgotPasswordFormDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
 import javax.servlet.http.HttpServletRequest;
+import javax.validation.Valid;
 import java.io.UnsupportedEncodingException;
 
 @Controller
@@ -27,18 +31,20 @@ public class ForgotPasswordController {
     private UserServices userService;
 
     @GetMapping("/forgotPassword")
-    public String showForgotPasswordForm() {
+    public String showForgotPasswordForm(Model model) {
+        model.addAttribute(new ForgotPasswordFormDTO());
         return "forgotPassword";
     }
 
     @PostMapping("/forgotPassword")
-    public String processForgotPassword(HttpServletRequest request, Model model) {
+    public String processForgotPassword(@ModelAttribute @Valid ForgotPasswordFormDTO forgotPasswordFormDTO,
+                                        Errors errors, HttpServletRequest request, Model model) {
         String email = request.getParameter("email");
         String token = RandomString.make(30);
 
         try {
             userService.updateResetPasswordToken(token, email);
-            String forgotPasswordLink = Utility.getSiteURL(request) + "/forgotPassword?token=" + token;
+            String forgotPasswordLink = Utility.getSiteURL(request) + "/resetPassword?token=" + token;
             sendEmail(email, forgotPasswordLink);
             model.addAttribute("message", "We have sent a reset password link to your email. Please check.");
 
@@ -73,7 +79,11 @@ public class ForgotPasswordController {
 
         helper.setText(content, true);
 
-        mailSender.send(message);
+        try {
+            mailSender.send(message);
+        } catch (Throwable ex) {
+            System.out.println(ex);
+        }
     }
 
 
@@ -100,13 +110,13 @@ public class ForgotPasswordController {
 
         if (user == null) {
             model.addAttribute("message", "Invalid Token");
-            return "message";
+            return "resetPassword";
         } else {
             userService.updatePassword(user, password);
 
-            model.addAttribute("message", "You have successfully changed your password.");
+            model.addAttribute("resetPasswordSuccess", "You have successfully changed your password.");
         }
 
-        return "message";
+        return "resetPasswordSuccess";
     }
 }
