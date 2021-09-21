@@ -6,10 +6,14 @@ import org.launchcode.britaneygroupa.UserServices;
 import org.launchcode.britaneygroupa.Utility;
 import org.launchcode.britaneygroupa.models.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-
+import javax.mail.MessagingException;
+import javax.mail.internet.MimeMessage;
 import javax.servlet.http.HttpServletRequest;
 import java.io.UnsupportedEncodingException;
 
@@ -50,7 +54,7 @@ public class ForgotPasswordController {
         MimeMessage message = mailSender.createMimeMessage();
         MimeMessageHelper helper = new MimeMessageHelper(message);
 
-        helper.setFrom("contact@shopme.com", "Shopme Support");
+        helper.setFrom("forgetmenot.app1@gmail.com", "ForgetMeNot Support");
         helper.setTo(recipientEmail);
 
         String subject = "Here's the link to reset your password";
@@ -72,7 +76,7 @@ public class ForgotPasswordController {
 
 
     @GetMapping("/resetPassword")
-    public String showResetPasswordForm(Model model) {
+    public String showResetPasswordForm(@Param(value = "token") String token, Model model) {
         User user = userService.getByResetPasswordToken(token);
         model.addAttribute("token", token);
 
@@ -85,7 +89,7 @@ public class ForgotPasswordController {
     }
 
     @PostMapping("/resetPassword")
-    public String processResetPassword(Model model) {
+    public String processResetPassword(HttpServletRequest request, Model model) {
         String token = request.getParameter("token");
         String password = request.getParameter("password");
 
