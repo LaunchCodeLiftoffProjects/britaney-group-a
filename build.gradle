@@ -18,6 +18,7 @@ dependencies {
 	implementation 'org.springframework.security:spring-security-crypto'
 	implementation 'org.springframework.boot:spring-boot-starter-validation'
 	implementation 'org.springframework.boot:spring-boot-starter-mail'
+	testImplementation 'org.awaitility:awaitility:3.1.2'
 	//begin dependencies added for Google
 	//implementation 'org.springframework.boot:spring-boot-starter-oauth2-client'
 	//implementation 'org.springframework.boot:spring-boot-starter-security'
