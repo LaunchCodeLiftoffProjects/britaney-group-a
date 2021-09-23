@@ -42,7 +42,7 @@ public class ReminderEmailBuilder {
     public void emailFiller (){
         //To Do: format body and send email as above -- this is capturing the last user who would otherwise be left out of the loop
         EmailReminderSender ers = new EmailReminderSender();
-        ers.sendSimpleEmail(/* TODO Fill in your parameters (subject, to, body, etc.) same as above.*/);
+        //ers.sendSimpleEmail(/* TODO Fill in your parameters (subject, to, body, etc.) same as above.*/);
     }
 
 }
