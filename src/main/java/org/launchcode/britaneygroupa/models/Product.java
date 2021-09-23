@@ -37,6 +37,7 @@ public class Product extends AbstractEntity {
 
     @NotNull
     @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @Temporal(TemporalType.DATE)
     private Date dateOfExpiry;
 
     @NotNull
@@ -44,6 +45,10 @@ public class Product extends AbstractEntity {
 
     @NotNull
     private int userId;
+
+    @OneToOne(optional = false)
+    @JoinColumn(name = "userId", nullable = false, insertable = false, updatable = false)
+    private User user;
 
     @Column(length = 64)
 
@@ -134,6 +139,14 @@ public class Product extends AbstractEntity {
 
     public void setFileName(String fileName) {
         this.fileName = fileName;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 
     @Override
