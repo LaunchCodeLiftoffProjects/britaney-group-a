@@ -24,11 +24,12 @@ import java.io.UnsupportedEncodingException;
 
 @Controller
 public class ForgotPasswordController {
-    @Autowired
-    private JavaMailSender mailSender;
 
     @Autowired
     private UserServices userService;
+
+    @Autowired
+    private EmailReminderSender emailSender;
 
     @GetMapping("/forgotPassword")
     public String showForgotPasswordForm(Model model) {
@@ -59,11 +60,6 @@ public class ForgotPasswordController {
 
     public void sendEmail(String recipientEmail, String link)
             throws MessagingException, UnsupportedEncodingException {
-        MimeMessage message = mailSender.createMimeMessage();
-        MimeMessageHelper helper = new MimeMessageHelper(message);
-
-        helper.setFrom("forgetmenot.app1@gmail.com", "ForgetMeNot Support");
-        helper.setTo(recipientEmail);
 
         String subject = "Here's the link to reset your password";
 
@@ -75,12 +71,8 @@ public class ForgotPasswordController {
                 + "<p>Ignore this email if you do remember your password, "
                 + "or you have not made the request.</p>";
 
-        helper.setSubject(subject);
-
-        helper.setText(content, true);
-
         try {
-            mailSender.send(message);
+            emailSender.sendSimpleEmail(recipientEmail, content, subject);
         } catch (Throwable ex) {
             System.out.println(ex);
         }

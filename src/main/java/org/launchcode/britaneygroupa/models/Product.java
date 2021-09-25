@@ -43,27 +43,16 @@ public class Product extends AbstractEntity {
     @NotNull
     private String description;
 
-    @NotNull
-    private int userId;
-
     @ManyToOne(optional = false)
-    @JoinColumn(name = "userId", nullable = false, insertable = false, updatable = false)
+    @JoinColumn(name = "userId", nullable = false)
     private User user;
 
-    @Column(length = 64)
+    private Boolean notified;
 
+    @Column(length = 64)
     private String fileName;
 
-    public MultipartFile getImage() {
-        return image;
-    }
-
-    public void setImage(MultipartFile image) {
-        this.image = image;
-    }
-
     @Transient
-
     private MultipartFile image;
 
     @Transient
@@ -125,14 +114,6 @@ public class Product extends AbstractEntity {
         this.description = description;
     }
 
-    public int getUserId() {
-        return userId;
-    }
-
-    public void setUserId(int userId) {
-        this.userId = userId;
-    }
-
     public String getFileName() {
         return fileName;
     }
@@ -147,6 +128,18 @@ public class Product extends AbstractEntity {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public Boolean getNotified() { return notified; }
+
+    public void setNotified(Boolean notified) { this.notified = notified; }
+
+    public MultipartFile getImage() {
+        return image;
+    }
+
+    public void setImage(MultipartFile image) {
+        this.image = image;
     }
 
     @Override

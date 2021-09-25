@@ -1,5 +1,7 @@
 package org.launchcode.britaneygroupa.controllers;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.mail.SimpleMailMessage;
@@ -11,6 +13,8 @@ import java.util.Date;
 
 @Service
 public class EmailReminderSender {
+
+    private static final Logger log = LoggerFactory.getLogger(EmailReminderSender.class);
 
     @Autowired
     private JavaMailSender mailSender;
@@ -30,9 +34,6 @@ public class EmailReminderSender {
         message.setSubject("Your Subscriptions Are Ending");
 
         mailSender.send(message);
-        System.out.println("Mail Sent " + new SimpleDateFormat("dd-MM-yyyy").format(new Date()));
+        log.info("Mail Sent " + new SimpleDateFormat("dd-MM-yyyy").format(new Date()));
     }
-
-   // public void sendSimpleEmail() {
-    //}
 }

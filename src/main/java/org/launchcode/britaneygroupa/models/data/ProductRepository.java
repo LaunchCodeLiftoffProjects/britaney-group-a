@@ -13,11 +13,11 @@ public interface ProductRepository extends CrudRepository<Product, Integer> {
 
     List<Product> findAllByUserId(int userId);
 
-    List<Product> findAllByDateOfExpiry(Date dateOfExpiry);
+    List<Product> findAllByDateOfExpiryAndNotifiedIsNull(Date dateOfExpiry);
 
     Product deleteById(int id);
 
     //NOTE: The SQL query here is broken because it can't compare dates effectively with the timestamp. Will try to figure that out soon
-    @Query (value = "Select * From product Where (date_of_expiry - sysdate) in (0, 1, 14, 30) Order By user_ID", nativeQuery = true)
-    List<Product> findExpiringItems();
+    //@Query (value = "Select * From product Where (date_of_expiry - sysdate) in (0, 1, 14, 30) Order By user_ID", nativeQuery = true)
+    //List<Product> findExpiringItems();
 }
