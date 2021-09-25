@@ -34,12 +34,10 @@ public class ScheduledTasks {
 
         for (Product expiringProduct : expiringProducts) {
 
-            String content = "<p>Hello,</p>"
-                    + "<p>You have requested to reset your password.</p>"
-                    + "<p>Click the link below to change your password:</p>"
-                    + "<br>"
-                    + "<p>Ignore this email if you do remember your password, "
-                    + "or you have not made the request.</p>";
+            String content = "Hello,\n\r"
+                    + "Your subscriptions are ending soon. In order to update your subscription date, please click here.\n\r"+
+                    "Regards,\n\r" +
+                    "ForgetMeNot Support";
 
             try {
                 // Send email to user
