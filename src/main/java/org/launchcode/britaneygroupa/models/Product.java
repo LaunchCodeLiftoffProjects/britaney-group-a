@@ -46,7 +46,7 @@ public class Product extends AbstractEntity {
     @NotNull
     private int userId;
 
-    @OneToOne(optional = false)
+    @ManyToOne(optional = false)
     @JoinColumn(name = "userId", nullable = false, insertable = false, updatable = false)
     private User user;
 
