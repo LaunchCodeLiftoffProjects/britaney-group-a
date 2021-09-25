@@ -16,32 +16,29 @@
         <img th:src="@{/images/forgetmelogo.png}" height="60" width="60"/>
         &emsp;
 
-        <a class="navbar-brand" href="#">Forget Me Not</a>
+        <a class="navbar-brand" href="/">Forget Me Not</a>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" th:href="@{/index}">Home</a>
-                </li>
                 <li class="nav-item" th:if="${session.user}">
-                    <a class="nav-link" th:href="@{/products}">Products</a>
+                    <a th:classappend="${#strings.startsWith(#httpServletRequest.getRequestURI(),'/products') ? 'active':''}" class="nav-link" th:href="@{/products}">Products</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" th:href="@{/about}">About</a>
+                    <a th:classappend="${#httpServletRequest.getRequestURI() == '/about' ? 'active':''}" class="nav-link" th:href="@{/about}">About</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" th:href="@{/features}">Features</a>
+                    <a th:classappend="${#httpServletRequest.getRequestURI() == '/features' ? 'active':''}" class="nav-link" th:href="@{/features}">Features</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" th:href="@{/faq}">FAQs</a>
+                    <a th:classappend="${#httpServletRequest.getRequestURI() == '/faq' ? 'active':''}" class="nav-link" th:href="@{/faq}">FAQs</a>
                 </li>
                 <li class="nav-item" th:if="${session.user == null}">
-                    <a class="nav-link" th:href="@{/register}">Register</a>
+                    <a th:classappend="${#httpServletRequest.getRequestURI() == '/register' ? 'active':''}" class="nav-link" th:href="@{/register}">Register</a>
                 </li>
                 <li class="nav-item" th:if="${session.user == null}">
-                    <a class="nav-link" th:href="@{/login}">LogIn</a>
+                    <a th:classappend="${#httpServletRequest.getRequestURI() == '/login' ? 'active':''}" class="nav-link" th:href="@{/login}">LogIn</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" th:href="@{/contact}">Contact</a>
+                    <a th:classappend="${#httpServletRequest.getRequestURI() == '/contact' ? 'active':''}" class="nav-link" th:href="@{/contact}">Contact</a>
                 </li>
                 <li class="nav-item" th:if="${session.user}">
                     <a class="nav-link" th:href="@{/logout}">Sign Out</a>
