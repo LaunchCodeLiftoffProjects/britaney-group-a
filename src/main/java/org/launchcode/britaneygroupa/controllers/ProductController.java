@@ -51,20 +51,22 @@ public class ProductController {
 
         // get user id from session
         newProduct.setUserId(((User) request.getSession().getAttribute("user")).getId());
-
-        String fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
-        newProduct.setFileName(fileName);
         Product savedProduct = productRepository.save(newProduct);
-        String uploadDir = "Product-image/" + savedProduct.getId();
-        Path uploadPath = Paths.get(uploadDir);
-        if (!Files.exists(uploadPath)) {
-            Files.createDirectories(uploadPath);
-        }
-        try (InputStream inputStream = multipartFile.getInputStream()) {
-            Path filePath = uploadPath.resolve(fileName);
-            Files.copy(inputStream, filePath, StandardCopyOption.REPLACE_EXISTING);
-        } catch (IOException ioe) {
-            throw new IOException("Could not save image file: " + fileName, ioe);
+        if (!multipartFile.isEmpty()) {
+            String fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
+            savedProduct.setFileName(fileName);
+            savedProduct = productRepository.save(newProduct);
+            String uploadDir = "Product-image/" + savedProduct.getId();
+            Path uploadPath = Paths.get(uploadDir);
+            if (!Files.exists(uploadPath)) {
+                Files.createDirectories(uploadPath);
+            }
+            try (InputStream inputStream = multipartFile.getInputStream()) {
+                Path filePath = uploadPath.resolve(fileName);
+                Files.copy(inputStream, filePath, StandardCopyOption.REPLACE_EXISTING);
+            } catch (IOException ioe) {
+                throw new IOException("Could not save image file: " + fileName, ioe);
+            }
         }
 
             // save product to db
@@ -81,26 +83,29 @@ public class ProductController {
     }
 
     @PostMapping("/edit/{id}")
-    public String edit(@PathVariable(name = "id") int id, @ModelAttribute @Valid Product newProduct, Errors errors, HttpServletRequest request, RedirectAttributes redirectAttrs,@RequestParam("image") MultipartFile multipartFile) throws IOException {
-        newProduct.setUserId(((User) request.getSession().getAttribute("user")).getId());
+    public String edit(@PathVariable(name = "id") int id, @ModelAttribute @Valid Product updateProduct, Errors errors, HttpServletRequest request, RedirectAttributes redirectAttrs,@RequestParam("image") MultipartFile multipartFile) throws IOException {
+        updateProduct.setUserId(((User) request.getSession().getAttribute("user")).getId());
         // save product to db
-        newProduct.setId(id);
+       updateProduct.setId(id);
+        //Product savedProduct = productRepository.save(updateProduct);
+        if (!multipartFile.isEmpty()) {
+            String fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
+            updateProduct.setFileName(fileName);
+            String uploadDir = "Product-image/" + id;
+            Path uploadPath = Paths.get(uploadDir);
+            if (!Files.exists(uploadPath)) {
+                Files.createDirectories(uploadPath);
+            }
+            try (InputStream inputStream = multipartFile.getInputStream()) {
+                Path filePath = uploadPath.resolve(fileName);
+                Files.copy(inputStream, filePath, StandardCopyOption.REPLACE_EXISTING);
 
-        String fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
-        newProduct.setFileName(fileName);
-        Product savedProduct = productRepository.save(newProduct);
-        String uploadDir = "Product-image/" + savedProduct.getId();
-        Path uploadPath = Paths.get(uploadDir);
-        if (!Files.exists(uploadPath)) {
-            Files.createDirectories(uploadPath);
+            } catch (IOException ioe) {
+                throw new IOException("Could not save image file: " + fileName, ioe);
+            }
         }
-        try (InputStream inputStream = multipartFile.getInputStream()) {
-            Path filePath = uploadPath.resolve(fileName);
-            Files.copy(inputStream, filePath, StandardCopyOption.REPLACE_EXISTING);
-        } catch (IOException ioe) {
-            throw new IOException("Could not save image file: " + fileName, ioe);
-        }
-        //productRepository.save(newProduct);
+        productRepository.save(updateProduct);
+
 
         redirectAttrs.addFlashAttribute("info", "Product Saved");
 

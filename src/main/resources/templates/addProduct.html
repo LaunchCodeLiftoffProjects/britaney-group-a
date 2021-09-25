@@ -37,6 +37,7 @@
         <div class="form-group">
             <label th:for="image">Upload Images</label>
             <input class="form-control" type="file" name="image" accept="image/png, image/jpeg" th:field="*{image}"/>
+            <input class="form-control" type="hidden" name="fileName" th:field="*{fileName}"/>
             <span th:errors="*{image}" class="error"></span><br>
         </div>
                  <input type="submit" class="btn btn-success" value="Save"/>

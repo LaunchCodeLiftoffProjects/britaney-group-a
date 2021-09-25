@@ -32,4 +32,7 @@ public class EmailReminderSender {
         mailSender.send(message);
         System.out.println("Mail Sent " + new SimpleDateFormat("dd-MM-yyyy").format(new Date()));
     }
+
+   // public void sendSimpleEmail() {
+    //}
 }

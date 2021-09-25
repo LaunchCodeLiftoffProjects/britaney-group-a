@@ -29,7 +29,11 @@
         <td class="table-primary" th:text="${product.dateOfPurchase}" ></td>
         <td class="table-primary" th:text="${product.dateOfExpiry}" ></td>
         <td class="table-primary" th:text="${product.description}"></td>
-        <td class="table-primary"><img th:src="${product.photosImagePath}" height="40" width="40"></td>
+        <td class="table-primary">
+          <img th:src="${product.photosImagePath}" onerror="this.error=null;this.src='/images/default.jpg';" height="50" width="50">
+            <!--<img th:src="${product.photosImagePath}" height="40" width="40">
+        -->
+        </td>
 
         <td><a th:href="@{'/products/edit/' + ${product.id}}" class="btn btn-success">Edit</a></td>
         <!--<td><a th:href="@{/products/edit/{id}(id=${product.id})}" class="btn btn-primary">Edit</a></td>-->
