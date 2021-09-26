@@ -47,8 +47,7 @@ public class ScheduledTasks {
                 expiringProduct.setNotified(Boolean.TRUE);
                 productRepository.save(expiringProduct);
             } catch (Throwable ex) {
-
-                log.error(String.format("Error sending email to user '%s' for product '%s'", expiringProduct.getUser().getEmail(), expiringProduct.getId()));
+                log.error(String.format("Error sending email to user '%s' for product '%s'", expiringProduct.getUser().getEmail(), expiringProduct.getId()), ex);
             }
         }
     }
