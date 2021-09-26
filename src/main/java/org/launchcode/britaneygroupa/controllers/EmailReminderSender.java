@@ -6,8 +6,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
 
+import javax.mail.MessagingException;
+import javax.mail.internet.MimeMessage;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -23,17 +26,27 @@ public class EmailReminderSender {
     @Value("mail.username")
     private String fromEmail;
 
-    public void sendSimpleEmail(String toEmail,
+    @Value("")
+    private String name;
+
+    public void sendEmail(String toEmail,
                                 String body,
                                 String subject) {
-        SimpleMailMessage message = new SimpleMailMessage();
+        MimeMessage message = mailSender.createMimeMessage();
+        MimeMessageHelper helper = new MimeMessageHelper(message);
 
-        message.setFrom(fromEmail);
-        message.setTo(toEmail);
-        message.setText(body);
-        message.setSubject("Your Subscriptions Are Ending");
+        try {
+            helper.setFrom(fromEmail, name);
+            helper.setTo(toEmail);
+            helper.setText(body, true);
+            helper.setSubject("Your Subscriptions Are Ending");
 
-        mailSender.send(message);
-        log.info("Mail Sent " + new SimpleDateFormat("dd-MM-yyyy").format(new Date()));
+            // send email
+            mailSender.send(message);
+
+            log.info("Mail Sent " + new SimpleDateFormat("dd-MM-yyyy").format(new Date()));
+        } catch (Exception ex) {
+            log.error("Error sending email.", ex);
+        }
     }
 }

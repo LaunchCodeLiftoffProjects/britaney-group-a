@@ -6,10 +6,10 @@ import org.launchcode.britaneygroupa.UserServices;
 import org.launchcode.britaneygroupa.Utility;
 import org.launchcode.britaneygroupa.models.User;
 import org.launchcode.britaneygroupa.models.dto.ForgotPasswordFormDTO;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
-import org.springframework.mail.javamail.JavaMailSender;
-import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
@@ -17,13 +17,14 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import javax.mail.MessagingException;
-import javax.mail.internet.MimeMessage;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import java.io.UnsupportedEncodingException;
 
 @Controller
 public class ForgotPasswordController {
+
+    private static final Logger log = LoggerFactory.getLogger(ForgotPasswordController.class);
 
     @Autowired
     private UserServices userService;
@@ -45,10 +46,11 @@ public class ForgotPasswordController {
 
         try {
             userService.updateResetPasswordToken(token, email);
+
             String forgotPasswordLink = Utility.getSiteURL(request) + "/resetPassword?token=" + token;
             sendEmail(email, forgotPasswordLink);
-            model.addAttribute("message", "We have sent a reset password link to your email. Please check.");
 
+            model.addAttribute("message", "We have sent a reset password link to your email. Please check.");
         } catch (UserNotFoundException ex) {
             model.addAttribute("error", ex.getMessage());
         } catch (UnsupportedEncodingException | MessagingException e) {
@@ -71,11 +73,7 @@ public class ForgotPasswordController {
                 + "<p>Ignore this email if you do remember your password, "
                 + "or you have not made the request.</p>";
 
-        try {
-            emailSender.sendSimpleEmail(recipientEmail, content, subject);
-        } catch (Throwable ex) {
-            System.out.println(ex);
-        }
+        emailSender.sendEmail(recipientEmail, content, subject);
     }
 
 

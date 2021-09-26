@@ -41,7 +41,7 @@ public class ScheduledTasks {
 
             try {
                 // Send email to user
-                emailSender.sendSimpleEmail(expiringProduct.getUser().getEmail(), content, subject);
+                emailSender.sendEmail(expiringProduct.getUser().getEmail(), content, subject);
 
                 // update user product indicating notification is sent
                 expiringProduct.setNotified(Boolean.TRUE);
