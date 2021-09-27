@@ -34,10 +34,10 @@ public class ScheduledTasks {
 
         for (Product expiringProduct : expiringProducts) {
 
-            String link = "";
-            String content = "Hello,\n\r"
-                    + "Your subscriptions are ending soon. In order to update your subscription date, please click the link: http://localhost:8080.\n\r" +
-                    "Regards,\n\r" +
+            String link = "<a href='http://localhost:8080'>here</a>";
+            String content = "Hello,<br><br>"
+                    + "Your subscriptions are ending soon. In order to update your subscription date, please click " + link + "<br><br>" +
+                    "Regards, <br><br>" +
                     "Forget Me Not Support";
 
             try {
