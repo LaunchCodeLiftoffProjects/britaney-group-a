@@ -42,14 +42,13 @@ public class ScheduledTasks {
 
             try {
                 // Send email to user
-                emailSender.sendSimpleEmail(expiringProduct.getUser().getEmail(), content, subject);
+                emailSender.sendEmail(expiringProduct.getUser().getEmail(), content, subject);
 
                 // update user product indicating notification is sent
                 expiringProduct.setNotified(Boolean.TRUE);
                 productRepository.save(expiringProduct);
             } catch (Throwable ex) {
-
-                log.error(String.format("Error sending email to user '%s' for product '%s'", expiringProduct.getUser().getEmail(), expiringProduct.getId()));
+                log.error(String.format("Error sending email to user '%s' for product '%s'", expiringProduct.getUser().getEmail(), expiringProduct.getId()), ex);
             }
         }
     }
