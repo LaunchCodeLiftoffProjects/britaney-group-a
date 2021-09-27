@@ -34,10 +34,11 @@ public class ScheduledTasks {
 
         for (Product expiringProduct : expiringProducts) {
 
+            String link = "";
             String content = "Hello,\n\r"
-                    + "Your subscriptions are ending soon. In order to update your subscription date, please click here.\n\r"+
+                    + "Your subscriptions are ending soon. In order to update your subscription date, please click the link: http://localhost:8080.\n\r" +
                     "Regards,\n\r" +
-                    "ForgetMeNot Support";
+                    "Forget Me Not Support";
 
             try {
                 // Send email to user
